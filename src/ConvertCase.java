@@ -1,5 +1,25 @@
 public class ConvertCase {
 
+    // pickle-refrigerator-golf-shoe
+    public static void detectCase(String s) {
+        String type;
+        // no bad strings!
+        if (s == null || s.isEmpty()) return;
+
+        char c = s.charAt(0);
+        if (Character.isUpperCase(c))
+            type = "Pascal";
+        else {
+            if (s.indexOf('_') != -1)
+                type = "Snake";
+            else if (s.indexOf('-') != -1)
+                type = "Kebab";
+            else
+                type = "Camel";
+        }
+        System.out.println(s + " is likely " + type + " case.");
+    }
+
     public static String snakeToCamel(String snakeCase) {
         // StringBuilder is a nice tool for mutable content.
         StringBuilder s = new StringBuilder();
@@ -52,6 +72,8 @@ public class ConvertCase {
 
         for (String camel : camels)
             System.out.println(camel + " -> " + camelToSnake(camel));
+
+        detectCase("pickle_refrigerator-golf-shoe");
     }
 
 }
